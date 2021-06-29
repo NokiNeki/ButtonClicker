@@ -1,14 +1,15 @@
-package Buttons;
+package ButtonsAndUpgrades;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Button {
+public class Buttons {
 
     public static int buttonClicks = 0;
+    public static int clicksPerClick = 1;
 
     /**
-     * @return returns the actionListener that adds 1 to buttonClicks
+     * @return the actionListener that adds 1 to buttonClicks
      * This is for the main click button for the application
      */
     public static ActionListener clickyButtonListener() {
@@ -16,7 +17,7 @@ public class Button {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                buttonClicks++;
+                buttonClicks += clicksPerClick;
             }
         };
     }
@@ -33,4 +34,6 @@ public class Button {
             }
         };
     }
+
+
 }

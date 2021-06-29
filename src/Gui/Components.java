@@ -8,7 +8,7 @@ public class Components {
 
     /**
      * This is for setting up the main window for the program
-     * @return returns the main frame for the program
+     * @return the main frame for the program
      */
     public static JFrame setupMainFrame() {
         JFrame mainFrame = new JFrame("ButtonClicker");
@@ -21,25 +21,34 @@ public class Components {
     /**
      * @param buttonName is used for setting the button text
      * @param frame is the frame that we want to add the button to
-     * @return returns the button created
+     * @return the button created
      */
-    public static JButton createJButton(String buttonName, JFrame frame) {
+    public static JButton createJButton(String buttonName, JFrame frame, int x, int y, int width, int height) {
         JButton button = new JButton(buttonName);
-        button.setBounds(175, 100, 150, 150);
+        button.setBounds(x, y, width, height);
         frame.add(button);
         return button;
     }
 
     /**
-     * @param buttonName is the name of the button/the text that appears on it
-     * @param frame is the frame that we want to add the button to
-     * @return the button
+     * @param text is the text that will go into the label
+     * @param frame is the frame that the label will be added to
+     * @param textAlignment of the text in the label
+     * @param x coordinate of the label
+     * @param y coordinate of the label
+     * @param width of the label
+     * @param height of the label
+     * @return the label
      */
-    public static JButton createResetButton(String buttonName, JFrame frame) {
-        JButton button = new JButton(buttonName);
-        button.setBounds(215, 300, 75, 25);
-        frame.add(button);
-        return button;
+    public static JLabel createJLabel(String text, JFrame frame, int textAlignment, int x, int y, int width, int height) {
+        JLabel label = new JLabel();
+        label.setBounds(x, y, width, height);
+        label.setText(text);
+        label.setHorizontalAlignment(textAlignment);
+        frame.add(label);
+
+        return label;
     }
+
 
 }

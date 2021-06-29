@@ -1,9 +1,11 @@
+import ButtonsAndUpgrades.Upgrades;
 import Gui.Components;
-import Buttons.Button;
+import ButtonsAndUpgrades.Buttons;
 
 import javax.swing.*;
 
-import static javax.swing.SwingConstants.CENTER;
+import static ButtonsAndUpgrades.Upgrades.plusOneC;
+import static ButtonsAndUpgrades.Upgrades.plusOneCAmount;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Main {
@@ -14,20 +16,32 @@ public class Main {
         JFrame mainFrame = Components.setupMainFrame();
         mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        JButton mainButton = Components.createJButton("Click Here", mainFrame);
-        mainButton.addActionListener(Button.clickyButtonListener());
+        // --------------------------------------------------------
+        int clickX = 175, clickY = 100;
+        JButton mainButton = Components.createJButton("Click Here", mainFrame, 175, 100, 150, 150);
+        mainButton.addActionListener(Buttons.clickyButtonListener());
 
-        JButton resetButton = Components.createResetButton("RESET", mainFrame);
-        resetButton.addActionListener(Button.resetButtonListener());
+        JLabel clickLabel = Components.createJLabel("test", mainFrame, 0, clickX /*175*/, clickY + 150/*250*/, 150, 50);
 
-        JLabel clickLabel = new JLabel();
-        clickLabel.setBounds(175, 250, 150, 50);
-        clickLabel.setText("Test");
-        clickLabel.setHorizontalAlignment(CENTER);
-        mainFrame.add(clickLabel);
+        JButton resetButton = Components.createJButton("RESET", mainFrame, clickX + 40/*215*/, clickY + 200/*300*/, 75, 25);
+        resetButton.addActionListener(Buttons.resetButtonListener());
+
+        // --------------------------------------------------------
+        int clickPlusOneX = 30, clickPlusOneY = 150;
+        JButton clickPlusOne = Components.createJButton("+1 CLICK", mainFrame, clickPlusOneX, clickPlusOneY, 120, 30);
+        clickPlusOne.addActionListener(Upgrades.clickPlusOneListener());
+        JLabel clickPlusOneLabel = Components.createJLabel(plusOneC + " Clicks : " + plusOneCAmount, mainFrame, 0, clickPlusOneX/*30*/, clickPlusOneY + 30/*180*/, 120, 15);
+
+
+
+
 
         while (true) {
-            clickLabel.setText(Integer.toString(Button.buttonClicks));
+            clickLabel.setText(Integer.toString(Buttons.buttonClicks));
+
+
+//            JLabel clickPlusOneLabel = Components.createJLabel(plusOneC + " Clicks : " + plusOneCAmount, mainFrame, 0, 30, 180, 120, 15);
+            clickPlusOneLabel.setText(plusOneC + " Clicks : " + plusOneCAmount);
         }
     }
 }
