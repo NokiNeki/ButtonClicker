@@ -5,14 +5,25 @@ import java.awt.event.ActionListener;
 
 public class Buttons {
 
-    public static int buttonClicks = 0;
-    public static int clicksPerClick = 1;
+    public int buttonClicks = 0;
+    public int clicksPerClick = 1;
+
+    private static final Buttons BUTTONSINSTANCE = new Buttons();
+    private Buttons() {}
+
+    /**
+     * @return an instance so all classes can use the same instance
+     */
+    public static Buttons getInstance() {
+        return BUTTONSINSTANCE;
+    }
+
 
     /**
      * @return the actionListener that adds 1 to buttonClicks
      * This is for the main click button for the application
      */
-    public static ActionListener clickyButtonListener() {
+    public ActionListener clickyButtonListener() {
 
         return new ActionListener() {
             @Override
@@ -25,7 +36,7 @@ public class Buttons {
     /**
      * @return the ActionListener that resets buttonClicks
      */
-    public static ActionListener resetButtonListener() {
+    public ActionListener resetButtonListener() {
 
         return new ActionListener() {
             @Override

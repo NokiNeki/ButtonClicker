@@ -7,7 +7,6 @@ import java.awt.*;
 public class Components {
 
     /**
-     * This is for setting up the main window for the program
      * @return the main frame for the program
      */
     public static JFrame setupMainFrame() {

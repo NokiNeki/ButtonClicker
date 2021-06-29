@@ -1,31 +1,59 @@
 package ButtonsAndUpgrades;
 
-import ButtonsAndUpgrades.Buttons;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static ButtonsAndUpgrades.Buttons.buttonClicks;
-import static ButtonsAndUpgrades.Buttons.clicksPerClick;
-
 public class Upgrades {
 
-    public static int plusOneC = 20;
-    public static int plusOneCAmount = 0;
+    Buttons Button = Buttons.getInstance();
+
+
+    private static final Upgrades UPGRADESINSTANCE = new Upgrades();
+    private Upgrades() {}
 
     /**
-     * @return the ActionListener for the upgrade
+     * @return an instance so all classes can use the same instance
      */
-    public static ActionListener clickPlusOneListener() {
+    public static Upgrades getInstance() {
+        return UPGRADESINSTANCE;
+    }
+
+
+
+    public int clickPlusOneAmount = 0, clickPlusOneCost = 20;
+    /**
+     * @return the ActionListener for the click upgrade
+     */
+    public ActionListener clickPlusOneListener() {
 
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (buttonClicks >= plusOneC) {
-                    clicksPerClick += 1;
-                    buttonClicks -= plusOneC;
-                    plusOneC += 5;
-                    plusOneCAmount++;
+                if (Button.buttonClicks >= clickPlusOneCost) {
+                    Button.clicksPerClick += 1;
+                    Button.buttonClicks -= clickPlusOneCost;
+                    clickPlusOneCost += 5;
+                    clickPlusOneAmount++;
+                }
+            }
+        };
+    }
+
+
+    public int autoPlusOneAmount = 0, autoPlusOneCost = 60;
+    /**
+     * @return the ActionListener for the automatic clicker
+     */
+    public ActionListener autoPlusOneListener() {
+
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (Button.buttonClicks >= autoPlusOneCost) {
+                    autoPlusOneAmount += 1;
+                    Button.buttonClicks -= autoPlusOneCost;
+                    autoPlusOneCost += 20;
+
                 }
             }
         };
