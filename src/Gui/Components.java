@@ -12,7 +12,7 @@ public class Components {
     public static JFrame setupMainFrame() {
         JFrame mainFrame = new JFrame("ButtonClicker");
         mainFrame.setVisible(true);
-        mainFrame.setSize(new Dimension(500, 500));
+        mainFrame.setSize(new Dimension(390, 380));
         mainFrame.setLayout(null);
         return mainFrame;
     }
@@ -20,6 +20,10 @@ public class Components {
     /**
      * @param buttonName is used for setting the button text
      * @param frame is the frame that we want to add the button to
+     * @param x is the x location of the button
+     * @param y is the y location of the button
+     * @param width is the width of the button
+     * @param height is the height of the button
      * @return the button created
      */
     public static JButton createJButton(String buttonName, JFrame frame, int x, int y, int width, int height) {
