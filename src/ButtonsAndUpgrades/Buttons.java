@@ -1,12 +1,10 @@
 package ButtonsAndUpgrades;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Buttons {
 
-    Upgrades Upgrade = Upgrades.getInstance();
-
+    public int totalClicks = 0;
     public int buttonClicks = 0;
     public int clicksPerClick = 1;
 
@@ -32,6 +30,7 @@ public class Buttons {
 
         return e -> {
             buttonClicks += clicksPerClick;
+            totalClicks += clicksPerClick;
         };
     }
 
@@ -40,12 +39,9 @@ public class Buttons {
      */
     public ActionListener resetButtonListener() {
 
-        return new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                buttonClicks = 0;
-                Upgrades.getInstance().upgradeReset();
-            };
+        return e -> {
+            buttonClicks = 0;
+            Upgrades.getInstance().upgradeReset();
         };
     }
 }

@@ -30,6 +30,8 @@ public class Main {
         JButton resetButton = Components.createJButton("RESET", mainFrame, clickX + 40/*215*/, clickY + 200/*300*/, 75, 25);
         resetButton.addActionListener(Button.resetButtonListener());
 
+        JLabel totalClickLabel = Components.createJLabel("Total Clicks : " + Button.totalClicks, mainFrame, 0, clickX, clickY - 50, 150, 50);
+
         // -------------------------------------------------- Clicker Upgrade Button
         int clickPlusOneX = 30, clickPlusOneY = 50;
         JButton clickPlusOne = Components.createJButton("+1 CLICK", mainFrame, clickPlusOneX, clickPlusOneY, 120, 30);
@@ -62,6 +64,7 @@ public class Main {
                 while (true) {
                     for (int i = 0; i < Upgrade.autoPlusOneAmount; i++) {
                         Button.buttonClicks++;
+                        Button.clicksPerClick++;
                     }
                     try {
                         Thread.sleep(1000);
@@ -75,6 +78,7 @@ public class Main {
         // ----- Game Loop
         while (true) {
             clickLabel.setText("Clicks : " + Button.buttonClicks);
+            totalClickLabel.setText("Total Clicks : " + Button.totalClicks);
 
 
             clickPlusOneLabel.setText(Upgrade.clickPlusOneCost + " Clicks : " + Upgrade.clickPlusOneAmount);
